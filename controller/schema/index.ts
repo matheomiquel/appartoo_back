@@ -1,1 +1,0 @@
-export { RegisterSchema, LoginSchema, addFriendSchema, acceptFriendRequestSchema } from './pangolin'

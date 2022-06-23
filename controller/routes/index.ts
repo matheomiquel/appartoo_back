@@ -1,1 +1,0 @@
-export { PangolinRoute } from './pangolin'
