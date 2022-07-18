@@ -1,6 +1,6 @@
-export { PangolinRoute, RoleRoute, CreateRoute } from './routes'
-export { PangolinService, RoleService } from './services'
-export { PangolinValidator } from './validator'
+export { UserRoute, RoleRoute, CreateRoute } from './routes'
+export { UserService, RoleService } from './services'
+export { UserValidator } from './validator'
 export {
     registerSwagger,
     AcceptFriendRequestSwagger,

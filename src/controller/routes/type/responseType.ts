@@ -1,0 +1,1 @@
+export type responseType<Obj> = Promise<{ status: number, data: Obj }>

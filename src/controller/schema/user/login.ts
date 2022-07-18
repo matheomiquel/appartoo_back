@@ -1,20 +1,10 @@
 import * as Joi from 'joi'
-import { PangolinResponse } from './pangolin';
+import { PangolinResponse } from './pangolin'
+import {Pangolin } from '../../../domain'
 const name = 'Matheo'
 const email = 'matheo@gmail.com'
 const password = 'password12'
-const RegisterSchemaBody = Joi.object({
-    name: Joi.string()
-        .alphanum()
-        .min(3)
-        .max(30)
-        .required()
-        .messages({
-            'string.base': `"name" should be a type of 'text'`,
-            'string.min': `"name" should have a minimum length of {#limit}`,
-            'string.max': `"name" should have a maximum length of {#limit}`,
-            'any.required': `"name" is a required field`
-        }).example(name),
+const LoginSchemaBody = Joi.object({
     email: Joi.string()
         .email()
         .max(256)
@@ -36,14 +26,13 @@ const RegisterSchemaBody = Joi.object({
             'any.required': `"password" is a required field`
         })
         .example(password),
-    role_id: Joi.number()
-        .required()
-        .example(1),
 });
 
-const RegisterSchemaResponse = Joi.object({
+const LoginSchemaResponse = Joi.object({
     pangolin: PangolinResponse,
     token: Joi.string().required()
 })
 
-export { RegisterSchemaBody, RegisterSchemaResponse };
+type LoginTypeResponse = {pangolin:Pangolin,token:string }
+
+export { LoginSchemaBody, LoginSchemaResponse ,LoginTypeResponse};

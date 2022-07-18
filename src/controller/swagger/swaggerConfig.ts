@@ -7,7 +7,7 @@ import {
     getAllExceptMyfriendSwagger,
     getfriendSwagger,
     getMeSwagger
-} from './pangolin'
+} from './user'
 import { tags } from './tags'
 export const swaggerConfig = {
     openapi: "3.0.0",

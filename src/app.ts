@@ -1,12 +1,12 @@
 import { PangolinData, RoleData } from './data'
 import { PangolinDomain, RoleDomain } from './domain'
-import { PangolinService, PangolinRoute, RoleService, RoleRoute } from './controller'
+import { UserService, UserRoute, RoleService, RoleRoute } from './controller'
 import { config } from 'dotenv'
-import { PangolinValidator } from './controller'
+import { UserValidator } from './controller'
 import * as cors from "cors";
 import * as bodyParser from "body-parser";
 import * as Express from 'express'
-import { Request, Response } from 'express'
+import { Request, Response,request,response } from 'express'
 import * as swaggerUI from 'swagger-ui-express';
 import { swaggerConfig } from './controller'
 import { CreateRoute } from './controller'
@@ -20,6 +20,7 @@ if (process.env.APP_ENV) {
 }
 config({ path: path });
 const PORT = process.env.PORT ?? 3000;
+
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerConfig));
 const createRoute = new CreateRoute({ app })
 //////////////////////////////////////////DATA//////////////////////////////////////////
@@ -34,31 +35,30 @@ const pangolinDomain = new PangolinDomain({ pangolinProvider: pangolinData, role
 
 //////////////////////////////////////////VALIDATOR//////////////////////////////////////////
 
-const pangolinValidator = new PangolinValidator()
+const userValidator = new UserValidator()
 
 //////////////////////////////////////////CONTROLLER//////////////////////////////////////////
 const roleService = new RoleService({ roleDomain })
-const pangolinService = new PangolinService({ pangolinDomain, pangolinValidator })
+const userService = new UserService({ pangolinDomain, userValidator })
 
 
 
 //////////////////////////////////////////ROUTES//////////////////////////////////////////
 
 new RoleRoute({ app, roleService })
-new PangolinRoute({ createRoute, pangolinService })
-
+new UserRoute({ createRoute, userService })
 
 app.get('/health', async function (req: Request, res: Response) {
     res.status(204).send()
 })
 
-app.all('*', async function (req: Request, res: Response) {
+app.post('*', async function (req: Request, res: Response) {
     res.status(404).send({
         message: 'route not found'
     })
 })
 
 
-app.listen(3000)
+app.listen(PORT)
 console.log(`server start on port ${PORT}`)
 

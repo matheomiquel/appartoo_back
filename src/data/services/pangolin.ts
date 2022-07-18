@@ -117,7 +117,6 @@ export class PangolinData implements PangolinInterface {
     }
 
     async getFriends({ id }: { id: number }): Promise<Pangolin[]> {
-        console.log(id)
         try {
             const pangolin = await PangolinModel.findByPk(id, {
                 include: [{
@@ -145,7 +144,6 @@ export class PangolinData implements PangolinInterface {
                 return new Pangolin({ id: friend.id, name: friend.name, email: friend.email, role: friend.role.name })
             })
         } catch (e) {
-            console.log(e)
             throw DataError.notFound({ message: 'pangolin not found' })
         }
     }

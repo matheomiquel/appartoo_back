@@ -7,6 +7,6 @@ export {
     getAllExceptMyfriendSwagger,
     getfriendSwagger,
     getMeSwagger
-} from './pangolin'
+} from './user'
 export { tags } from './tags'
 export { swaggerConfig } from './swaggerConfig'

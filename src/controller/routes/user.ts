@@ -1,70 +1,79 @@
-import { PangolinService } from '../services'
+import { UserService,RoleService } from '../services'
 import { authMiddleware } from '../middleware'
 import { CreateRoute } from './createRoutes'
-const endpoint = 'pangolin'
-export class PangolinRoute {
-    constructor({ createRoute, pangolinService }: { createRoute: CreateRoute, pangolinService: PangolinService }) {
-        createRoute.createRoute(
+const endpoint = 'user'
+export class UserRoute {
+    constructor({ createRoute, userService }: { createRoute: CreateRoute, userService: UserService }) {
+        createRoute.createRoute2(
             {
                 method: `post`,
                 path: '/register',
-                handler: pangolinService.register.bind({ ...pangolinService }),
+                handler: userService.register,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `post`,
                 path: '/login',
-                handler: pangolinService.login.bind({ ...pangolinService }),
+                handler: userService.login,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `post`,
                 path: `/${endpoint}/addFriend`,
                 middleware: [authMiddleware],
-                handler: pangolinService.addFriend.bind({ ...pangolinService }),
+                handler: userService.addFriend,
+                context: userService
 
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `post`,
                 path: `/${endpoint}/acceptFriendRequest`,
                 middleware: [authMiddleware],
-                handler: pangolinService.acceptFriendRequest.bind({ ...pangolinService }),
+                handler: userService.acceptFriendRequest,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `get`,
                 path: `/${endpoint}/getMe`,
                 middleware: [authMiddleware],
-                handler: pangolinService.getMe.bind({ ...pangolinService }),
+                handler: userService.getMe,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `get`,
                 path: `/${endpoint}/getAll`,
                 middleware: [authMiddleware],
-                handler: pangolinService.getAll.bind({ ...pangolinService }),
+                handler: userService.getAll,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `get`,
                 path: `/${endpoint}/getAllExcpetMyFriend`,
                 middleware: [authMiddleware],
-                handler: pangolinService.getAllExcpetMyFriend.bind({ ...pangolinService }),
+                handler: userService.getAllExcpetMyFriend,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `get`,
                 path: `/${endpoint}/getFriends`,
                 middleware: [authMiddleware],
-                handler: pangolinService.getFriends.bind({ ...pangolinService }),
+                handler: userService.getFriends,
+                context: userService
             })
-        createRoute.createRoute(
+        createRoute.createRoute2(
             {
                 method: `put`,
                 path: `/${endpoint}/updateRole`,
                 middleware: [authMiddleware],
-                handler: pangolinService.updateRole.bind({ ...pangolinService }),
+                handler: userService.updateRole,
+                context: userService
             })
     }
 }

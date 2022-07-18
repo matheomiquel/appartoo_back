@@ -1,1 +1,1 @@
-export { PangolinValidator } from './pangolin'
+export { UserValidator } from './user'

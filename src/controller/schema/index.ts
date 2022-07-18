@@ -8,6 +8,8 @@ export {
     PangolinResponse,
     PangolinsResponse,
     GetPangolinSchemaQuery,
-    TokenHeader
-} from './pangolin'
+    TokenHeader,
+    RegisterTypeResponse,
+    LoginTypeResponse
+} from './user'
 export { GetById } from './common'

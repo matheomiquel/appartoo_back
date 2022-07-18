@@ -2,8 +2,9 @@ import { RegisterSchemaBody, LoginSchemaBody, AddFriendSchemaBody, AcceptFriendR
 import { Request } from 'express'
 import { ValidationError } from 'joi'
 import { ControllerError } from '../error'
-export class PangolinValidator {
-    async register(req: Request) {
+import { requestType} from '../routes/type'
+export class UserValidator {
+    async register(req: requestType) {
         try {
             await RegisterSchemaBody.validateAsync(req.body, {
                 abortEarly: false
@@ -15,7 +16,7 @@ export class PangolinValidator {
             })
         }
     }
-    async login(req: Request) {
+    async login(req: requestType) {
         try {
             await LoginSchemaBody.validateAsync(req.body, {
                 abortEarly: false
@@ -27,7 +28,7 @@ export class PangolinValidator {
             })
         }
     }
-    async addFriend(req: Request) {
+    async addFriend(req: requestType) {
         try {
             await AddFriendSchemaBody.validateAsync(req.body, {
                 abortEarly: false
@@ -39,7 +40,7 @@ export class PangolinValidator {
             })
         }
     }
-    async acceptFriendRequest(req: Request) {
+    async acceptFriendRequest(req: requestType) {
         try {
             await AcceptFriendRequestSchemaBody.validateAsync(req.body, {
                 abortEarly: false
@@ -51,7 +52,7 @@ export class PangolinValidator {
             })
         }
     }
-    async getPangolinRequest(req: Request) {
+    async getPangolinRequest(req: requestType) {
         try {
             await GetPangolinSchemaQuery.validateAsync(req.query, {
                 abortEarly: false

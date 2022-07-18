@@ -1,2 +1,2 @@
-export { PangolinService } from './pangolin'
+export { UserService } from './user'
 export { RoleService } from './role'

@@ -1,5 +1,5 @@
-export { RegisterSchemaBody, RegisterSchemaResponse } from './register'
-export { LoginSchemaBody, LoginSchemaResponse } from './login'
+export { RegisterSchemaBody, RegisterSchemaResponse,RegisterTypeResponse } from './register'
+export { LoginSchemaBody, LoginSchemaResponse,LoginTypeResponse } from './login'
 export { AddFriendSchemaBody } from './addFriend'
 export { AcceptFriendRequestSchemaBody } from './acceptFriendRequest'
 export { PangolinResponse } from './pangolin'
